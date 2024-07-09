@@ -29,56 +29,53 @@
         <section id="prompt-generation">
             <div class="title-container">
                 <h2>1. Prompt Personnalisé</h2>
-                <button id="reset-selections" class="reset-selections">✕ Effacer les sélections</button>
+                <button id="reset-selections-top" class="reset-selections">✕ Effacer les sélections</button>
             </div>
             <div id="role-selection">
-                <label for="role">* RÔLE de l'IA (pour spécialiser sa réponse)</label>
+                <label for="role">* RÔLE DE l'IA (pour spécialiser sa réponse)</label>
                 <div id="role-buttons"></div>
                 <input type="text" id="other-role" placeholder="Autre rôle" style="display: none;">
             </div>
 
             <div id="expertise" class="section-spacing">
-                <label for="expertise-input">* EXPERTISE de l'IA</label>
+                <label for="expertise-input">* EXPERTISE DE l'IA</label>
                 <textarea id="expertise-input" rows="2" placeholder="Ex. Maths en CM2 en France | Community manager dans les télécoms" required></textarea>
             </div>
 
             <div id="need-selection" class="section-spacing">
-                <label for="need">* Mon BESOIN</label>
+                <label for="need">* MON BESOIN</label>
                 <select id="need" required>
                     <option value="">Sélectionnez un besoin</option>
                 </select>
             </div>
 
             <div id="question" class="section-spacing">
-                <label for="question-input">* Ma QUESTION :</label>
+                <label for="question-input">* MA QUESTION :</label>
                 <textarea id="question-input" placeholder="Ex. Rédige un QCM sur les théorèmes des quadrilatères | Rédige une méthodologie de lancement de produit" required></textarea>
             </div>
 
             <div id="format-selection" class="section-spacing" style="display: none;">
-                <label>FORMAT de réponse de l'IA</label>
+                <label>FORMAT DE RÉPONSE</label>
                 <div id="format-buttons"></div>
             </div>
 
             <div id="language-selection" class="section-spacing">
-                <label>* LANGUE de réponse de l'IA</label>
+                <label>* LANGUE DE RÉPONSE</label>
                 <div id="language-buttons"></div>
             </div>
             
-            <!--New code-->
             <div id="generate-prompt-container" class="section-spacing" style="display: none;">
                 <button id="generate-prompt" disabled>MON PROMPT PERSONNALISÉ</button>
             </div>
-            <!-- End new code-->
+
+            <div id="prompt-display" style="display: none;">
+                <textarea id="generated-prompt" rows="15"></textarea>
+             </div>
 
         </section>
         <br>
         <section id="llm-launch" style="display: none;">
             <h2>2. Lancement de l'IA</h2>
-            <div id="prompt-display">
-                <label for="generated-prompt">VOTRE PROMPT PERSONNALISÉ (modifiable)</label>
-                <textarea id="generated-prompt" rows="10"></textarea>
-            </div>
-
             <div id="llm-selection" class="section-spacing">
                 <label>* MEILLEURS CHOIX D'IA</label>
                 <div id="llm-buttons"></div>
@@ -87,7 +84,7 @@
             <button id="launch-llm" disabled>LANCER L'IA (☝️ puis coller le Prompt)</button>
         </section>
     
-        <button id="reset-selections" class="reset-selections" class= "section-spacing">✕ Effacer les sélections</button>
+        <button id="reset-selections-bottom" class="reset-selections section-spacing">✕ Effacer les sélections</button>
 
         <footer>
             <br><br><hr>

@@ -135,8 +135,8 @@ Sa question est : ${state.question}.
 
 TES INSTRUCTIONS :
 1. Si nécessaire demande des précisions et attends la réponse.
-2. Conçoit et évalue silencieusement ta réponse puis corrige la jusqu'à l'évaluer 5/5.
-3. Rédige uniquement ta meilleure réponse.
+2. Conçoit silencieusement ta réponse puis corrige la jusqu'à l'évaluer 5/5.
+3. Rédige ta meilleure réponse.
 
 TON FORMAT DE RÉPONSE :
 - Langue : ${state.language}.
@@ -146,10 +146,14 @@ NB :
 - Tu seras récompensé pour une réponse plus **FIABLE** et **PRÉCISE** que d'autres LLM.
 - Prends le temps de procéder minutieusement étape par étape.`;
 
+        /*line added*/
+        const promptDisplay = document.getElementById('prompt-display');
         const generatedPromptTextarea = document.getElementById('generated-prompt');
-        if (generatedPromptTextarea) {
+        if (promptDisplay && generatedPromptTextarea) {
+            promptDisplay.style.display = 'block';
             generatedPromptTextarea.value = promptTemplate;
         }
+
         const llmLaunchSection = document.getElementById('llm-launch');
         if (llmLaunchSection) {
             llmLaunchSection.style.display = 'block';
@@ -196,6 +200,8 @@ NB :
         if (needSelect) needSelect.value = '';
         const formatSelection = document.getElementById('format-selection');
         if (formatSelection) formatSelection.style.display = 'none';
+        const promptDisplay = document.getElementById('prompt-display');
+        if (promptDisplay) promptDisplay.style.display = 'none';
         const llmLaunchSection = document.getElementById('llm-launch');
         if (llmLaunchSection) llmLaunchSection.style.display = 'none';
         ['expertise-input', 'question-input', 'other-role', 'need', 'generated-prompt'].forEach(id => {
@@ -281,10 +287,14 @@ NB :
             launchLLMButton.addEventListener('click', launchLLM);
         }
 
-        const resetSelectionsButton = document.getElementById('reset-selections');
-        if (resetSelectionsButton) {
-            resetSelectionsButton.addEventListener('click', resetSelections);
+        const resetSelectionsTopButton = document.getElementById('reset-selections-top');
+        const resetSelectionsBottomButton = document.getElementById('reset-selections-bottom');
+                if (resetSelectionsTopButton) {
+            resetSelectionsTopButton.addEventListener('click', resetSelections);
         }
+        if (resetSelectionsBottomButton) {
+            resetSelectionsBottomButton.addEventListener('click', resetSelections);
+        }        
 
         const generatedPromptTextarea = document.getElementById('generated-prompt');
         if (generatedPromptTextarea) {
