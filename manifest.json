@@ -18,7 +18,7 @@
     "128": "icons/icon128.png"
   },
   "web_accessible_resources": [{
-    "resources": ["https://ays-0908.github.io/aiforall_extension/privacy/privacy-policy.html"],
+    "resources": ["privacy-policy.html"],
     "matches": ["<all_urls>"]
   }]
 }
