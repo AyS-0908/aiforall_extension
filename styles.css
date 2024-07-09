@@ -1,0 +1,108 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    width: 400px;
+    padding: 20px;
+}
+
+h2 {
+    font-weight: bold;
+}
+
+.section-spacing {
+    margin-top: 20px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+}
+
+.title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.title-container h2 {
+    margin: 0;
+}
+
+#prompt-generation {
+    margin-top: 20px;
+}
+
+.reset-selections {
+    background: none;
+    border: none;
+    color: grey;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.9em;
+    padding: 0;
+    cursor: pointer;
+    text-align: right;
+}
+
+#reset-selections {
+    margin-top: 15px;
+    width: 100%;
+}
+
+.title-container #reset-selections {
+    margin-top: 0;
+    width: auto;
+}
+
+input[type="text"], textarea, select {
+    width: 100%;
+    padding: 5px;
+    margin-top: 5px;
+}
+
+button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.select-button {
+    display: inline-flex;
+    align-items: center;
+    margin: 5px;
+    padding: 5px 10px;
+    background-color: #8ED973;
+    color: black;
+    cursor: pointer;
+    border-radius: 5px
+}
+
+.select-button.selected {
+    background-color: #28A745;
+    color: white;
+}
+
+.select-button img {
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+footer {
+    margin-top: 20px;
+    text-align: center;
+    color: grey;
+    font-size: 0.8em;
+}
+
+footer hr {
+    border: 0;
+    border-top: 1px solid #eee;
+}
+
+footer a {
+    color: grey;
+}

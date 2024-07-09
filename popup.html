@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI for All Extension</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <section id="presentation">
+            <img src="images/aiforall-intro.png" alt="AI for All Introduction" style="width: 100%; height: auto;">
+            <details>
+                <summary>Guide d'utilisation</summary>
+                <div id="user-guide">
+                    <p style="color: grey;">Pour retirer la vraie valeur de l'IA il faut ◾ poser une <b>question structurée ('prompt')</b> et ◾ identifier l'<b>outil approprié</b>.</p>
+                    <p style = "color:grey;">Cette complexité est désormais <b>résolue</b> via des clics :</p>
+                    <ul>
+                        <li style = "color:grey;">'prompt' rédigé tout seul</li>
+                        <li style = "color:grey;">pré-sélection de l'outil, copie du prompt et ouverture automatiques de l'outil
+                        <li style = "color:grey;">Vous avez juste à coller le prompt !</li>
+                    </ul>
+                    <p style = "color:grey;">L'IA est enfin <b>dé-mo-cra-ti-sée</b> : 100% gratuit et 0% de vos données privées.</p>
+                </div>
+            </details>
+        </section>
+        <br>
+        <section id="prompt-generation">
+            <div class="title-container">
+                <h2>1. Prompt Personnalisé</h2>
+                <button id="reset-selections" class="reset-selections">✕ Effacer les sélections</button>
+            </div>
+            <div id="role-selection">
+                <label for="role">* RÔLE de l'IA (pour spécialiser sa réponse)</label>
+                <div id="role-buttons"></div>
+                <input type="text" id="other-role" placeholder="Autre rôle" style="display: none;">
+            </div>
+
+            <div id="expertise" class="section-spacing">
+                <label for="expertise-input">* EXPERTISE de l'IA</label>
+                <textarea id="expertise-input" rows="2" placeholder="Ex. Maths en CM2 en France | Community manager dans les télécoms" required></textarea>
+            </div>
+
+            <div id="need-selection" class="section-spacing">
+                <label for="need">* Mon BESOIN</label>
+                <select id="need" required>
+                    <option value="">Sélectionnez un besoin</option>
+                </select>
+            </div>
+
+            <div id="question" class="section-spacing">
+                <label for="question-input">* Ma QUESTION :</label>
+                <textarea id="question-input" placeholder="Ex. Rédige un QCM sur les théorèmes des quadrilatères | Rédige une méthodologie de lancement de produit" required></textarea>
+            </div>
+
+            <div id="format-selection" class="section-spacing" style="display: none;">
+                <label>FORMAT de réponse de l'IA</label>
+                <div id="format-buttons"></div>
+            </div>
+
+            <div id="language-selection" class="section-spacing">
+                <label>* LANGUE de réponse de l'IA</label>
+                <div id="language-buttons"></div>
+            </div>
+            
+            <!--New code-->
+            <div id="generate-prompt-container" class="section-spacing" style="display: none;">
+                <button id="generate-prompt" disabled>MON PROMPT PERSONNALISÉ</button>
+            </div>
+            <!-- End new code-->
+
+        </section>
+        <br>
+        <section id="llm-launch" style="display: none;">
+            <h2>2. Lancement de l'IA</h2>
+            <div id="prompt-display">
+                <label for="generated-prompt">VOTRE PROMPT PERSONNALISÉ (modifiable)</label>
+                <textarea id="generated-prompt" rows="10"></textarea>
+            </div>
+
+            <div id="llm-selection" class="section-spacing">
+                <label>* MEILLEURS CHOIX D'IA</label>
+                <div id="llm-buttons"></div>
+            </div>
+
+            <button id="launch-llm" disabled>LANCER L'IA (☝️ puis coller le Prompt)</button>
+        </section>
+    
+        <button id="reset-selections" class="reset-selections" class= "section-spacing">✕ Effacer les sélections</button>
+
+        <footer>
+            <br><br><hr>
+            <p>🌐 <a href="https://www.sourcinno.com" target="_blank">sourcinno.com</a> - 📧 <a href="mailto:contact@sourcinno.com">contact@sourcinno.com</a></p>
+            <p>Propriété exclusive de Sourcinno SAS - 2024.</p>
+            <!--url to Privacy Policy: chrome-extension://<your-extension-id>/privacy-policy.html-->
+            <p><a href="privacy-policy.html" target="_blank">Politique de Confidentialité</a></p>
+        </footer>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>
