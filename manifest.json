@@ -1,9 +1,9 @@
 {
   "manifest_version": 3,
-  "name": "AI for All",
-  "version": "1.0",
+  "name": "AI for All (1.1)",
+  "version": "1.1",
   "description": "Prompt automatique pour AI",
-  "permissions": ["storage", "activeTab"],
+  "permissions": [],
   "action": {
     "default_popup": "popup.html",
     "default_icon": {

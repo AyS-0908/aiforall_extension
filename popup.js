@@ -1,29 +1,30 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const roles = ["Expert business", "Scientifique", "Enseignant", "Journaliste", "Politicien", "Artiste", "Parent", "Autres"];
+    const roles = ["Expert métier", "Scientifique", "Enseignant", "Journaliste", "Politicien", "Artiste", "Parent", "Autres"];
     const needs = [
-        "Raisonnement ou Rédaction",
+        "Raisonnement",
+        "Rédaction",
         "Recherche Internet",
         "Aide Excel & Google Sheet",
-        "Création : Powerpoint-Google Slide",
-        "Création : Diagramme-Mindmap",
-        "Création : Image",
-        "Création : Video",
-        "Création : Code",
+        "Représentation graphique",
+        "Création de Slide",
+        "Création d'Image",
+        "Création de Video",
+        "Création de Code",
         "Autre"
     ];
     const formats = ["Paragraphes", "Bullet points", "Plan détaillé", "Tableau", "Code snippet"];
     const languages = ["Français", "Anglais", "Espagnol", "Portugais", "Japonais", "Allemand", "Russe", "Hindi", "Chinois"];
     const llmOptions = [
-        { need: ["a", "i"], title: "ChatGpt", url: "https://chatgpt.com/?model=gpt-4o", logo: "chatgpt-logo.png" },
-        { need: ["a", "h", "i"], title: "Claude AI", url: "https://claude.ai/chats", logo: "claude-logo.png" },
-        { need: ["b"], title: "Perplexity AI", url: "https://perplexity.ai/", logo: "perplexity-logo.png" },
-        { need: ["c"], title: "ChatGpt", url: "https://chatgpt.com/g/g-qPkrz1jtl-sheets-assistant-ask-anything-on-sheets", logo: "chatgpt-logo.png" },
-        { need: ["d"], title: "ChatGpt", url: "https://chatgpt.com/g/g-cJtHaGnyo-presentation-and-slides-gpt-powerpoints-pdfs", logo: "chatgpt-logo.png" },
+        { need: ["a", "b", "j"], title: "ChatGpt", url: "https://chatgpt.com/?model=gpt-4o", logo: "chatgpt-logo.png" },
+        { need: ["a", "b", "i", "j"], title: "Claude AI", url: "https://claude.ai/chats", logo: "claude-logo.png" },
+        { need: ["c"], title: "Perplexity AI", url: "https://perplexity.ai/", logo: "perplexity-logo.png" },
+        { need: ["d"], title: "ChatGpt", url: "https://chatgpt.com/g/g-qPkrz1jtl-sheets-assistant-ask-anything-on-sheets", logo: "chatgpt-logo.png" },
         { need: ["e"], title: "ChatGpt", url: "https://chatgpt.com/g/g-vI2kaiM9N-whimsical-diagrams", logo: "chatgpt-logo.png" },
-        { need: ["f"], title: "ChatGpt Dall-E", url: "https://chatgpt.com/g/g-2fkFE8rbu-dall-e", logo: "dalle-logo.png" },
-        { need: ["f"], title: "Microsoft Designer", url: "https://designer.microsoft.com/", logo: "ms-designer-logo.png" },
-        { need: ["g"], title: "ChatGpt", url: "https://chatgpt.com/g/g-h8l4uLHFQ-video-ai", logo: "chatgpt-logo.png" },
-        { need: ["h"], title: "ChatGpt", url: "https://chatgpt.com/g/g-n7Rs0IK86-grimoire", logo: "chatgpt-logo.png" }
+        { need: ["f"], title: "ChatGpt", url: "https://chatgpt.com/g/g-cJtHaGnyo-presentation-and-slides-gpt-powerpoints-pdfs", logo: "chatgpt-logo.png" },
+        { need: ["g"], title: "ChatGpt Dall-E", url: "https://chatgpt.com/g/g-2fkFE8rbu-dall-e", logo: "dalle-logo.png" },
+        { need: ["g"], title: "Microsoft Designer", url: "https://designer.microsoft.com/", logo: "ms-designer-logo.png" },
+        { need: ["h"], title: "ChatGpt", url: "https://chatgpt.com/g/g-h8l4uLHFQ-video-ai", logo: "chatgpt-logo.png" },
+        { need: ["i"], title: "ChatGpt", url: "https://chatgpt.com/g/g-n7Rs0IK86-grimoire", logo: "chatgpt-logo.png" }
     ];
 
     let state = {
@@ -66,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const formatSelection = document.getElementById('format-selection');
             if (formatSelection) {
                 formatSelection.style.display = 
-                    ['Raisonnement ou Rédaction', 'Recherche Internet', 'Autre'].includes(value) ? 'block' : 'none';
+                    ['Raisonnement', 'Rédaction', 'Recherche Internet', 'Autre'].includes(value) ? 'block' : 'none';
             }
             updateLLMOptions();
         }
@@ -131,12 +132,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 TA TÂCHE :
 Assister un utilisateur dont le besoin est : ${state.need}.
-Sa question est : ${state.question}.
+Sa Question est : ${state.question}.
 
 TES INSTRUCTIONS :
-1. Si nécessaire demande des précisions et attends la réponse.
-2. Conçoit silencieusement ta réponse puis corrige la jusqu'à l'évaluer 5/5.
-3. Rédige ta meilleure réponse.
+1. Si nécessaire demande des précisions (exemple : audience, étapes à suivre, style de rédaction, langage informatique, pièce jointe...). Attends la réponse.
+2. Prépare silencieusement ta réponse. Puis retravaille la silencieusement jusqu'à l'évaluer 5/5.
+3. Rédige uniquement ta meilleure réponse. Conclus en évaluant le niveau de fiabilité de ta réponse.
 
 TON FORMAT DE RÉPONSE :
 - Langue : ${state.language}.
@@ -144,6 +145,7 @@ ${state.format ? `- Structure: ${state.format}.` : ''}
 
 NB :
 - Tu seras récompensé pour une réponse plus **FIABLE** et **PRÉCISE** que d'autres LLM.
+- Assure-toi d'un maximum de fiabilité dans ta réponse.
 - Prends le temps de procéder minutieusement étape par étape.`;
 
         /*line added*/
@@ -183,6 +185,52 @@ NB :
     }
 
     function resetSelections() {
+        // Preserve role, expertise, and language
+        const preservedState = {
+            role: state.role,
+            otherRole: state.otherRole,
+            expertise: state.expertise,
+            language: state.language
+        };
+        
+        // Reset other fields
+        state = {
+            ...preservedState,
+            need: '',
+            question: '',
+            format: '',
+            selectedLLM: null
+        };
+        
+        // Update UI for reset fields
+        ['need', 'question', 'format'].forEach(field => {
+            const buttons = document.querySelectorAll(`#${field}-buttons .select-button`);
+            buttons.forEach(btn => btn.classList.remove('selected'));
+        });
+        
+        const needSelect = document.getElementById('need');
+        if (needSelect) needSelect.value = '';
+        
+        const questionInput = document.getElementById('question-input');
+        if (questionInput) questionInput.value = '';
+        
+        const formatSelection = document.getElementById('format-selection');
+        if (formatSelection) formatSelection.style.display = 'none';
+        
+        const promptDisplay = document.getElementById('prompt-display');
+        if (promptDisplay) promptDisplay.style.display = 'none';
+        
+        const llmLaunchSection = document.getElementById('llm-launch');
+        if (llmLaunchSection) llmLaunchSection.style.display = 'none';
+        
+        const generatedPromptTextarea = document.getElementById('generated-prompt');
+        if (generatedPromptTextarea) generatedPromptTextarea.value = '';
+        
+        validateForm();
+        saveState();
+    }
+
+    function fullReset() {
         state = {
             role: '',
             otherRole: '',
@@ -194,16 +242,22 @@ NB :
             selectedLLM: null
         };
         document.querySelectorAll('.select-button').forEach(btn => btn.classList.remove('selected'));
+        
         const otherRoleInput = document.getElementById('other-role');
         if (otherRoleInput) otherRoleInput.style.display = 'none';
+        
         const needSelect = document.getElementById('need');
         if (needSelect) needSelect.value = '';
+        
         const formatSelection = document.getElementById('format-selection');
         if (formatSelection) formatSelection.style.display = 'none';
+        
         const promptDisplay = document.getElementById('prompt-display');
         if (promptDisplay) promptDisplay.style.display = 'none';
+        
         const llmLaunchSection = document.getElementById('llm-launch');
         if (llmLaunchSection) llmLaunchSection.style.display = 'none';
+        
         ['expertise-input', 'question-input', 'other-role', 'need', 'generated-prompt'].forEach(id => {
             const element = document.getElementById(id);
             if (element) element.value = '';
@@ -213,7 +267,13 @@ NB :
     }
 
     function saveState() {
-        localStorage.setItem('aiForAllState', JSON.stringify(state));
+        const persistentState = {
+            role: state.role,
+            otherRole: state.otherRole,
+            expertise: state.expertise,
+            language: state.language
+        };
+        localStorage.setItem('aiForAllState', JSON.stringify(persistentState));
     }
 
     function loadState() {
@@ -290,10 +350,10 @@ NB :
         const resetSelectionsTopButton = document.getElementById('reset-selections-top');
         const resetSelectionsBottomButton = document.getElementById('reset-selections-bottom');
                 if (resetSelectionsTopButton) {
-            resetSelectionsTopButton.addEventListener('click', resetSelections);
+            resetSelectionsTopButton.addEventListener('click', fullReset);
         }
         if (resetSelectionsBottomButton) {
-            resetSelectionsBottomButton.addEventListener('click', resetSelections);
+            resetSelectionsBottomButton.addEventListener('click', fullReset);
         }        
 
         const generatedPromptTextarea = document.getElementById('generated-prompt');
